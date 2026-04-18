@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DS Visualizer — Tree & Graph</title>
+  <meta name="description" content="Interactive visualizer for Tree and Graph data structures with BFS, DFS, Tree Traversal, and Kruskal's algorithm. Uses KNN and Linear Regression ML models.">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="logo"><div class="logo-dot"></div>DS Visualizer</div>
+    <button class="ds-tab" id="tab-trees"  onclick="switchDS('trees',this)">🌲 Trees</button>
+    <button class="ds-tab active" id="tab-graphs" onclick="switchDS('graphs',this)">🕸 Graphs</button>
+    <div class="badge"><div class="badge-dot"></div>Python · KNN + Linear Regression</div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- Canvas — JS draws only -->
+    <div class="canvas-side">
+      <div class="toolbar">
+        <span class="tb-label">Value</span>
+        <input type="number" id="valInput" class="val-input" placeholder="1–99" min="1" max="99">
+        <div id="opBtns"></div>
+        <div class="speed-wrap">
+          <span class="tb-label">Speed</span>
+          <input type="range" class="speed-range" id="speedRange" min="1" max="5" value="3">
+        </div>
+      </div>
+      <div class="canvas-wrap">
+        <canvas id="vizCanvas"></canvas>
+        <div id="graphHint">
+          Click <span>node→node</span> to connect &nbsp;·&nbsp;
+          Click <span>canvas</span> to add &nbsp;·&nbsp;
+          <span>Drag</span> to move
+        </div>
+        <div id="algoBanner"></div>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel">
+
+      <!-- API Status -->
+      <div class="status-bar">
+        <div class="status-label">Python API · :5001</div>
+        <div id="statusMsg" class="status-info">Connecting…</div>
+      </div>
+
+      <!-- DS State from Python -->
+      <div class="state-panel">
+        <div class="panel-title">Live Python State</div>
+        <div class="state-box" id="stateBox">—</div>
+      </div>
+
+      <!-- Last Algorithm Result -->
+      <div class="algo-section">
+        <div class="panel-title">Algorithm Result</div>
+        <div class="algo-result-box" id="algoResultBox"><span style="color:var(--muted)">Run an algorithm to see the traversal order</span></div>
+      </div>
+
+      <!-- ML 1: KNN Smart Insert -->
+      <div class="ml-section">
+        <div class="ml-head" onclick="toggleSection('knn')">
+          <span class="ml-icon">🔵</span>
+          <span class="ml-title">KNN Smart Insert</span>
+          <span class="ml-tag tag-knn">KNN Regressor</span>
+          <span class="ml-toggle" id="ml-btn-knn">▼</span>
+        </div>
+        <div class="ml-body" id="ml-body-knn">
+          <div class="ml-card" id="knn-result">
+            <div class="ml-placeholder">Run an operation to activate</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ML 2: Linear Regression Complexity -->
+      <div class="ml-section">
+        <div class="ml-head" onclick="toggleSection('lr')">
+          <span class="ml-icon">📈</span>
+          <span class="ml-title">Complexity Predictor</span>
+          <span class="ml-tag tag-lr">Linear Regression</span>
+          <span class="ml-toggle" id="ml-btn-lr">▼</span>
+        </div>
+        <div class="ml-body" id="ml-body-lr">
+          <div class="ml-card" id="lr-result">
+            <div class="ml-placeholder">Run an operation to activate</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Op Log -->
+      <div class="log-section">
+        <div class="panel-title">Operation Log</div>
+        <div class="op-log" id="opLog"><span class="lc">// ready</span></div>
+      </div>
+
+    </div><!-- /right-panel -->
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<script src="js/main.js"></script>
+</body>
+</html>

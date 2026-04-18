@@ -1,0 +1,32 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "🚀 Run Flask Backend",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/backend/app.py",
+      "cwd": "${workspaceFolder}/backend",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "env": {
+        "FLASK_ENV": "development",
+        "FLASK_DEBUG": "0"
+      },
+      "args": []
+    },
+    {
+      "name": "🌐 Open Frontend in Browser",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5001",
+      "webRoot": "${workspaceFolder}/frontend"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "▶ Full App (Backend + Browser)",
+      "configurations": ["🚀 Run Flask Backend", "🌐 Open Frontend in Browser"]
+    }
+  ]
+}

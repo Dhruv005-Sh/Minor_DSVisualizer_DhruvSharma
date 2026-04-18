@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.debugpy",
+    "ms-python.pylance",
+    "esbenp.prettier-vscode",
+    "formulahendry.auto-rename-tag",
+    "ritwickdey.liveserver"
+  ]
+}
